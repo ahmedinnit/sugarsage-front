@@ -51,7 +51,7 @@ function Users() {
       setLoading(true);
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:3001/api/admin/user/getall', {
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/admin/user/getall`, {
           headers: {
             Authorization: `${token}`
           }
@@ -135,7 +135,7 @@ function Users() {
       return;
     }
     const token = localStorage.getItem('token');
-    const apiEndpoint = `http://localhost:3001/api/admin/user/update/${currentUserId}`;
+    const apiEndpoint = `${process.env.REACT_APP_BACKEND_URL}/api/admin/user/update/${currentUserId}`;
     const requestMethod = axios.put;
 
     try {
@@ -161,7 +161,7 @@ function Users() {
   const handleDeleteConfirm = async () => {
     const token = localStorage.getItem('token');
     try {
-      await axios.delete(`http://localhost:3001/api/admin/user/delete/${userToDelete.user_id}`, {
+      await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/admin/user/delete/${userToDelete.user_id}`, {
         headers: {
           Authorization: `${token}`
         }

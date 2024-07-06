@@ -45,7 +45,7 @@ function Blog() {
   const fetchData = async () => {
     const token = localStorage.getItem('token');
     try {
-      const response = await axios.get('http://localhost:3001/api/admin/blog/getall', {
+      const response = await axios.get('${process.env.}/api/admin/blog/getall', {
         headers: {
           Authorization: `${token}`
         }
@@ -128,8 +128,8 @@ function Blog() {
       blogFormData.append('image', imageUrl);
 
       const apiEndpoint = isEditing
-        ? `http://localhost:3001/api/admin/blog/update/${currentBlogId}`
-        : 'http://localhost:3001/api/admin/blog/add';
+        ? `${process.env.REACT_APP_BACKEND_URL}/api/admin/blog/update/${currentBlogId}`
+        : `${process.env.REACT_APP_BACKEND_URL}/api/admin/blog/add`;
 
       console.log('Is Editing:', isEditing);
       const requestMethod = isEditing ? axios.put : axios.post;
@@ -364,7 +364,7 @@ function Blog() {
   const handleDeleteConfirm = () => {
     const token = localStorage.getItem('token');
     axios
-      .delete(`http://localhost:3001/api/admin/blog/delete/${blogToDelete.blog_id}`, {
+      .delete(`${process.env.REACT_APP_BACKEND_URL}/api/admin/blog/delete/${blogToDelete.blog_id}`, {
         headers: {
           Authorization: `${token}`
         }

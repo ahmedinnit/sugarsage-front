@@ -31,7 +31,7 @@ const BlogPostsPage = () => {
       setLoading(true);
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:3001/api/user/blogs/getAll', {
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/user/blogs/getAll`, {
           headers: {
             Authorization: `${token}`
           }

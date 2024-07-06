@@ -46,7 +46,7 @@ function Dish() {
   useEffect(() => {
     const token = localStorage.getItem('token');
     axios
-      .get('http://localhost:3001/api/admin/dish/getall', {
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/admin/dish/getall`, {
         headers: {
           Authorization: `${token}`
         }
@@ -126,8 +126,8 @@ function Dish() {
     }
     const token = localStorage.getItem('token');
     const apiEndpoint = isEditing
-      ? `http://localhost:3001/api/admin/dish/update/${currentDishId}`
-      : 'http://localhost:3001/api/admin/dish/add';
+      ? `${process.env.REACT_APP_BACKEND_URL}/api/admin/dish/update/${currentDishId}`
+      : `${process.env.REACT_APP_BACKEND_URL}/api/admin/dish/add`;
     const requestMethod = isEditing ? axios.put : axios.post;
 
     requestMethod(apiEndpoint, formData, {
@@ -176,7 +176,7 @@ function Dish() {
   const handleDeleteConfirm = () => {
     const token = localStorage.getItem('token');
     axios
-      .delete(`http://localhost:3001/api/admin/dish/delete/${dishToDelete.dish_id}`, {
+      .delete(`${process.env.REACT_APP_BACKEND_URL}/api/admin/dish/delete/${dishToDelete.dish_id}`, {
         headers: {
           Authorization: `${token}`
         }

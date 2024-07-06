@@ -100,7 +100,7 @@ const HealthForm = () => {
       console.log(formattedDataString);
 
       try {
-        const response = await axios.post('http://localhost:3001/api/auth/signup', fullData);
+        const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/auth/signup`, fullData);
         console.log('Response from the server:', response.data);
         localStorage.clear();
         navigate('/login');

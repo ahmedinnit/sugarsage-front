@@ -96,7 +96,7 @@ export default function HealthTracker() {
       const token = localStorage.getItem('token');
       try {
         const response = await axios.post(
-          `http://localhost:3001/api/user/healthtracker/${user_id}`,
+          `${process.env.REACT_APP_BACKEND_URL}PP_BACKEND_URL}/api/user/healthtracker/${user_id}`,
           {},
           {
             headers: {

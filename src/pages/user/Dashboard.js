@@ -80,7 +80,7 @@ export default function Dashboard() {
       const token = localStorage.getItem('token');
       try {
         const response = await axios.post(
-          `http://localhost:3001/api/user/Dashboard/${user_id}`,
+          `${process.env.REACT_APP_BACKEND_URL}/api/user/Dashboard/${user_id}`,
           {},
           {
             headers: {

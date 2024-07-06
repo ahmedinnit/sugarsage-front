@@ -52,7 +52,7 @@ export default function MealPlan() {
     const token = localStorage.getItem('token');
     axios
       .post(
-        `http://localhost:3001/api/user/mealplans/generate/${user_id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/user/mealplans/generate/${user_id}`,
         { FBS },
         {
           headers: {

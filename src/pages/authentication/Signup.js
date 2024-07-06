@@ -85,7 +85,7 @@ const Signup = () => {
     }
 
     // try {
-    //   const result = await axios.post('http://localhost:3001/api/auth/register', { email, password });
+    //   const result = await axios.post('${process.env.REACT_APP_BACKEND_URL}/api/auth/register', { email, password });
     //   console.log('Result: ', result);
     //   navigate('/login');
     // } catch (error) {

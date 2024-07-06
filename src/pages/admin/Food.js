@@ -44,7 +44,7 @@ function Food() {
   useEffect(() => {
     const token = localStorage.getItem('token');
     axios
-      .get('http://localhost:3001/api/admin/getallfoods', {
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/admin/getallfoods`, {
         headers: {
           Authorization: `${token}`
         }
@@ -119,7 +119,7 @@ function Food() {
       return;
     }
     const token = localStorage.getItem('token');
-    const apiEndpoint = isEditing ? `http://localhost:3001/api/admin/editfood/${currentFoodId}` : 'http://localhost:3001/api/admin/addfood';
+    const apiEndpoint = isEditing ? `${process.env.REACT_APP_BACKEND_URL}/api/admin/editfood/${currentFoodId}` : `${process.env.REACT_APP_BACKEND_URL}/api/admin/addfood`;
     const requestMethod = isEditing ? axios.put : axios.post;
 
     requestMethod(apiEndpoint, formData, {
@@ -168,7 +168,7 @@ function Food() {
   const handleDeleteConfirm = () => {
     const token = localStorage.getItem('token');
     axios
-      .delete(`http://localhost:3001/api/admin/deletefood/${foodToDelete.food_id}`, {
+      .delete(`${process.env.REACT_APP_BACKEND_URL}PP_BACKEND_URL}/api/admin/deletefood/${foodToDelete.food_id}`, {
         headers: {
           Authorization: `${token}`
         }

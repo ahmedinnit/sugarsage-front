@@ -90,7 +90,7 @@ const MealPlanDisplay = () => {
     }));
 
     try {
-      await axios.post(`http://localhost:3001/api/user/mealplans/store/${userId}`, { mealDetails });
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/user/mealplans/store/${userId}`, { mealDetails });
       alert('Meal plan saved successfully!');
       navigate('/'); // Redirect to home or another page after saving
     } catch (error) {

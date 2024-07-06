@@ -79,7 +79,7 @@ const FeedbackForm = () => {
       const token = localStorage.getItem('token');
 
       axios
-        .post(`http://localhost:3001/api/user/feedback/${userId}`, formData, {
+        .post(`${process.env.REACT_APP_BACKEND_URL}/api/user/feedback/${userId}`, formData, {
           headers: {
             Authorization: `${token}`
           }

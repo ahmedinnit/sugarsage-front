@@ -31,7 +31,7 @@ function Feedback() {
   useEffect(() => {
     const token = localStorage.getItem('token');
     axios
-      .get('http://localhost:3001/api/admin/feedback/getall', {
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/admin/feedback/getall`, {
         headers: {
           Authorization: `${token}`
         }
@@ -57,7 +57,7 @@ function Feedback() {
   const handleDeleteConfirm = () => {
     const token = localStorage.getItem('token');
     axios
-      .delete(`http://localhost:3001/api/admin/feedback/delete/${selectedFeedback.feedback_id}`, {
+      .delete(`${process.env.REACT_APP_BACKEND_URL}/api/admin/feedback/delete/${selectedFeedback.feedback_id}`, {
         headers: {
           Authorization: `${token}`
         }

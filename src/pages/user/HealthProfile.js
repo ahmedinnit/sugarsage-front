@@ -28,7 +28,7 @@ function Profile() {
 
       try {
         const response = await axios.post(
-          `http://localhost:3001/api/user/healthprofile/get/${admin_id}`,
+          `${process.env.REACT_APP_BACKEND_URL}/api/user/healthprofile/get/${admin_id}`,
           {},
           { headers: { Authorization: `${token}` } }
         );
@@ -151,7 +151,7 @@ function Profile() {
     const token = localStorage.getItem('token');
 
     try {
-      const response = await axios.put(`http://localhost:3001/api/user/healthprofile/update/${admin_id}`, formData, {
+      const response = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/user/healthprofile/update/${admin_id}`, formData, {
         headers: { Authorization: `${token}` }
       });
 

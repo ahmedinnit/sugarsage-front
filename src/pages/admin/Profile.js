@@ -33,7 +33,7 @@ function Profile() {
     const admin_id = localStorage.getItem('id');
     axios
       .post(
-        `http://localhost:3001/api/admin/profile/get/${admin_id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/admin/profile/get/${admin_id}`,
         {},
         {
           headers: {
@@ -115,7 +115,7 @@ function Profile() {
         .post('https://api.cloudinary.com/v1_1/dqem8pi4b/image/upload', imageFormData)
         .then((res) => {
           updateData.profile_picture = res.data.secure_url;
-          return axios.put(`http://localhost:3001/api/admin/profile/update/${admin_id}`, updateData, {
+          return axios.put(`${process.env.REACT_APP_BACKEND_URL}/api/admin/profile/update/${admin_id}`, updateData, {
             headers: {
               Authorization: `${token}`
             }
@@ -134,7 +134,7 @@ function Profile() {
     } else {
       const token = localStorage.getItem('token');
       axios
-        .put(`http://localhost:3001/api/admin/profile/update/${admin_id}`, updateData, {
+        .put(`${process.env.REACT_APP_BACKEND_URL}/api/admin/profile/update/${admin_id}`, updateData, {
           headers: {
             Authorization: `${token}`
           }
@@ -156,7 +156,7 @@ function Profile() {
     const admin_id = localStorage.getItem('id');
     const token = localStorage.getItem('token');
     axios
-      .delete(`http://localhost:3001/api/admin/profile/delete/${admin_id}`, {
+      .delete(`${process.env.REACT_APP_BACKEND_URL}/api/admin/profile/delete/${admin_id}`, {
         headers: {
           Authorization: `${token}`
         }
